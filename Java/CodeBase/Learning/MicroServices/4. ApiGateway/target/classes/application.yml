@@ -1,0 +1,26 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: ApiGateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+      - id: UserService
+        uri: http://localhost:7001/
+        predicates:
+        - Path=/user/**
+      - id: UserContactDetails
+        uri: http://localhost:7002/
+        predicates:
+        - Path=/user/contact/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

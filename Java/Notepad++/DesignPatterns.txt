@@ -1,0 +1,125 @@
+1. Creational Design Patterns
+
+Singleton Pattern
+Factory Pattern
+Abstract Factory Pattern
+Builder Pattern
+Prototype Pattern
+
+=================================================================================================
+Factory Pattern
+
+->it hides the object creation logic from the client code
+->Factory class is used for creating objects of subclasses based on input parameter
+
+
+Advantages:
+
+1. allows sub-classes to choose the type of object to create
+2. promotes loose-coupling
+
+=================================================================================================
+Abstract Factory Pattern
+
+->another layer of abstraction is added over factory pattern
+->it provides the concept of Factory of Factories
+
+Advantages:
+1. provides more flexibilty over factory pattern
+
+=================================================================================================
+Builder Pattern
+
+Issues with Factory & Abstract Factory Pattern:
+
+While creating object, if object contains many attributes
+
+1. we have to pass too many arguments from client code to Factory class, difficult to maintain order
+2. some parameters might be optional
+3. if object is heavy then factory class may become complex
+
+->in builder pattern, object is created step by step
+->it helps in creating immutable object
+
+=================================================================================================
+
+2. Structural Design Patterns
+
+Adapter Pattern
+Bridge Pattern
+Composite Pattern
+Decorator Pattern
+Facade Pattern
+Flyweight Pattern
+Proxy Pattern
+
+3. Behavioural Design Patterns
+
+Chain of Responsibility Pattern
+Command Pattern
+Interpreter Pattern
+Iterator Pattern
+Mediator Pattern
+Memento Pattern
+Observer Pattern
+State Pattern
+Strategy Pattern
+Template Method Pattern
+Visitor Pattern
+
+=================================================================================================
+
+Prototype Pattern
+
+->concept is to copy an existing object rather than creating a new object from scratch 
+->this approach saves costly resources and time, especially when object creation is a heavy process
+
+
+Shallow copy vs Deep copy
+
+Shallow copy
+-> A shallow copy creates a new object, but it does not create copies of nested objects
+->It only copies the references of nested objects, 
+meaning changes made to nested objects in the shallow copy will reflect in the original object, and vice versa
+
+diagram:
+
+->clone() method creates a shallow copy by default
+
+Deep copy
+-> A deep copy creates a new object and recursively copies all nested objects
+->It ensures that changes made in the copied object do not affect the original object, and vice versa.e
+
+diagram:
+
+=================================================================================================
+Behavioural Design pattern
+
+->how objects communicate with each other?
+
+Observer design pattern
+
+->when one object changes its state, then all its dependent objects are notified
+
+diagram:
+subject                             observers
+
+->defines one to many relationship
+
+=================================================================================================
+
+Iterator design pattern
+
+->provides a way to access the elements of an aggregate object sequentially without exposing its underlying implementation
+
+=================================================================================================
+
+Structural design pattern
+
+-> how to assemble objects and classes into larger structures, while keeping these structures flexible and efficient
+
+adapter design pattern
+
+->acts as a connector between two incompatible interfaces so that they can work together
+
+ex. mobile adapter diagram

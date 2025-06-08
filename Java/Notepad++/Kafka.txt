@@ -1,0 +1,72 @@
+Apache Kafka
+
+communication system that helps microservices exchange data by publishing and subscibing to topics
+
+
+diagram:
+
+
+Exmples:
+
+1. OLA driver location update
+2. Zomato live food tracking
+3. Notification system to huge users
+
+Zomato live food tracking
+
+diagram
+traditional model vs Apache kafka model:
+
+
+why kafka>
+
+1. high throughput
+   million records read/write in seconds
+   
+2. fault tolerance(Replication)
+   multiple nodes data replicate
+   
+3. durable
+
+4. Scalable
+
+Kafka Architecture
+
+kafka cluster ka andar brokers hota ha
+kafka ka jo server ha whi broker ha
+broker ka andar topics hota ha(topics data ko categorize karna ka lia hota ha), topics ka andar partitions hota ha or partitions ma hi data store hota ha
+zookeeper help krta ha apache kafka ko, broker ki state ko manage karna ka lia
+
+Installation guide
+
+1. download Kafka zip file from official websit(kafka.apache.org/quickstart)
+2. extract file
+3. start Zookeeper
+   run command: bin\windows\zookeeper-server-start.bat config\zookeeper.properties         //open cmd in same location of bin & config
+4. start Kafka server
+   run command: bin\windows\kafka-server-start.bat config\server.properties
+
+Using kafka with console
+
+1. create new topic with kafka-topics
+2. produce example message with kafka-console-producer
+3. consume the message with kafka-console-consumer
+
+
+Step1:
+bin\windows\kafka-topics.bat --create --topic user-topic --bootstrap-server localhost:9092
+
+Step2:
+bin\windows\kafka-console-producer.bat --topic user-topic --bootstrap-server localhost:9092
+>hello
+>this is producer-consumer demo
+
+Step3:
+>bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+>hello
+>this is producer-consumer demo
+
+>bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+>hello
+>this is producer-consumer demo
+
