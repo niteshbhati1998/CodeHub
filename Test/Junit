@@ -1,0 +1,77 @@
+## default test class for spring boot application
+
+@SpringBootTest                        //tells spring boot to start full application context for testing
+class TestApplicationTests {
+
+    @Test
+    void contextLoads() {              //if context fails to load(misconfigured beans, missing dependencies)
+    }                                  //this test will fail
+
+}
+
+=======================================================================================
+
+## junit shortcuts
+command + shift + t = generate test class for current class
+
+=======================================================================================
+
+## annotations
+@ExtendWith                            //JUnit 5 annotation that allows to register extensions
+@ExtendWith(MockitoExtension.class)    //tells JUnit to use MockitoExtension when running test class
+                                       //automatically initializes all mocks before each test method runs (@Mock, @Spy, @InjectMocks)
+@Mock
+@InjectMocks
+
+=======================================================================================
+
+## test lifecycle
+@BeforeAll (class level setup) -> @BeforeEach (setup for each test) -> @Test (test execution) -> @AfterEach (cleanup) -> @AfterAll (Class level cleanup)
+
+@BeforeAll
+static method
+runs once before all tests in class
+
+@BeforeEach
+runs before each test method
+
+@Test
+test method execution
+
+@AfterEach
+runs after each test method
+
+@AfterAll
+static method
+runs once after all tests in class
+
+=======================================================================================
+
+## mocking void methods using doNothing()
+
+//Arrange
+doNothing().when(myRepository).deleteById(id);
+
+//Assert
+verify(myService, times(1)).deleteById(id);
+
+=======================================================================================
+
+## difference between when() and doThrow() for void methods
+
+void deleteById(Long id);      //if method return type is void but can still throw exception
+                               //prefer doThrow() over when() because when() always expects a return value
+
+when(myRepository.deleteById(id)).thenThrow(new RuntimeException("Invalid user ID"));
+doThrow(new RuntimeException("Invalid user ID")).when(myRepository).deleteById(id);
+
+=======================================================================================
+
+## testing private methods
+
+private methods should ideally not be tested directly
+test them indirectly through public methods that call them
+
+but if absolutely necessary, use reflection to access private methods
+
+=======================================================================================
