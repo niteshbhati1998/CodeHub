@@ -34,5 +34,5 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findByName(String name);
 }
 
-diagram.....![](/Users/nitesh_bhati/Desktop/Screenshot 2026-01-28 at 6.41.07 PM.png)
+diagram.....
 ===============================================================================
