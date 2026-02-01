@@ -75,3 +75,7 @@ test them indirectly through public methods that call them
 but if absolutely necessary, use reflection to access private methods
 
 =======================================================================================
+
+## pending...
+
+stub vs mock vs spy

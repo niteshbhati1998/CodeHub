@@ -34,3 +34,5 @@ POST: send new data to server to create a new resource
 PUT: update an existing resource completely
 PATCH: update an existing resource partially
 DELETE: remove a resource from server
+
+## http status codes

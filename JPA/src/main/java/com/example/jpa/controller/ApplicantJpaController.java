@@ -2,8 +2,10 @@ package com.example.jpa.controller;
 
 import com.example.jpa.entity.Applicant;
 import com.example.jpa.model.Response;
-import com.example.jpa.service.ApplicantService;
+import com.example.jpa.service.ApplicantJpaService;
+import com.example.jpa.service.ApplicantPagingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +14,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/applicant")
-public class ApplicantController {
+public class ApplicantJpaController {
 
     @Autowired
-    private ApplicantService applicantService;
+    private ApplicantJpaService applicantJpaService;
 
-    @PostMapping("/save")
-    public ResponseEntity<Response> saveApplicant(@RequestBody Applicant applicant) {
+    @GetMapping("/getByLastName")
+    public ResponseEntity<Response> getByLastName(@RequestParam String lastName) {
         Response response = new Response();
         try {
-            Applicant savedApplicant = applicantService.saveApplicant(applicant);
+            List<Applicant> applicantsList = applicantJpaService.getByLastName(lastName);
             response.setMessage("success");
-            response.setPayload(savedApplicant);
+            response.setPayload(applicantsList);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception ex) {
             response.setMessage("failure: " + ex.getMessage());
@@ -31,13 +33,13 @@ public class ApplicantController {
         }
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Response> getAllApplicants() {
+    @GetMapping("/like")
+    public ResponseEntity<Response> getApplicants(@RequestParam String value) {
         Response response = new Response();
         try {
-            List<Applicant> applicantsList = applicantService.getAllApplicants();
+            List<Applicant> applicants = applicantJpaService.getApplicants(value);
             response.setMessage("success");
-            response.setPayload(applicantsList);
+            response.setPayload(applicants);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception ex) {
             response.setMessage("failure: " + ex.getMessage());
