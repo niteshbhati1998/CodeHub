@@ -1,13 +1,7 @@
 package com.example.jpa.service;
 
-import com.example.jpa.entity.Department;
-import com.example.jpa.entity.Employee;
-import com.example.jpa.entity.Passport;
-import com.example.jpa.entity.Person;
-import com.example.jpa.repository.DepartmentRepository;
-import com.example.jpa.repository.EmployeeRepository;
-import com.example.jpa.repository.PassportRepository;
-import com.example.jpa.repository.PersonRepository;
+import com.example.jpa.entity.*;
+import com.example.jpa.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +23,12 @@ public class MyService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
 
     public Passport savePassport(Passport passport) {
         return passportRepository.save(passport);
@@ -59,5 +59,13 @@ public class MyService {
             e.setDepartment(department);
         }
         return departmentRepository.save(department);
+    }
+
+    public Student saveStudent(Student student) {
+        //set back-reference
+        for (Course course : student.getCourses()) {
+            course.getStudents().add(student);
+        }
+        return studentRepository.save(student);
     }
 }

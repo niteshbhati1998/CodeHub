@@ -1,15 +1,24 @@
 package com.example.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "course", schema = "staging")
-@Data
+@Getter
+@Setter
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String courseName;
+    private String title;
+
+    @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
+    private Set<Student> students = new HashSet<>();
 }

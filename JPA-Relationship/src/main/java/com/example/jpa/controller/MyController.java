@@ -1,9 +1,6 @@
 package com.example.jpa.controller;
 
-import com.example.jpa.entity.Department;
-import com.example.jpa.entity.Employee;
-import com.example.jpa.entity.Passport;
-import com.example.jpa.entity.Person;
+import com.example.jpa.entity.*;
 import com.example.jpa.model.Response;
 import com.example.jpa.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +93,20 @@ public class MyController {
             Department savedDepartment = myService.saveDepartment(department);
             response.setMessage("success");
             response.setPayload(savedDepartment);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception ex) {
+            response.setMessage("failure: " + ex.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/save/student")
+    public ResponseEntity<Response> saveStudent(@RequestBody Student student) {
+        Response response = new Response();
+        try {
+            Student savedStudent = myService.saveStudent(student);
+            response.setMessage("success");
+            response.setPayload(savedStudent);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception ex) {
             response.setMessage("failure: " + ex.getMessage());

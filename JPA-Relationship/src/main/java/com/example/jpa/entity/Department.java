@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,5 +18,5 @@ public class Department {
     private String departmentName;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Employee> employee;
+    private List<Employee> employee = new ArrayList<>();
 }
