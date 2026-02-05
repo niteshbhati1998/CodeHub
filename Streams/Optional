@@ -1,42 +1,18 @@
-//Streams are lazy //invoked only when terminal operation is applied
-        //Optional are eager //apply transformations immediately
+Optional class
 
         //val.get()
         //val.orElse(InputType input)
         //val.orElseGet(Supplier supplier)   //can return input type only
         //val.orElseThrow()
-        //val.orElseThrow(Supplier supplier
+        //val.orElseThrow(Supplier supplier)
 
+==========================================================================================
+Two types of streams:
+1. generic object stream (e.g., Stream<Integer>, Stream<String>)
+2. primitive streams (e.g., IntStream, LongStream, DoubleStream)
 
+mapToObj applies on primitive stream
 
-        read more about construcotr reference new
-        does it creates new map or call paramterixzed const.)
+Streams are lazy   //invoked only when terminal operation is applied
+Optional is eager  //apply transformations immediately
 
-
-
-        1. Stream Types in Java
-        Java has different kinds of streams:
-
-        Stream<T> → generic object stream (e.g., Stream<Integer>, Stream<String>).
-
-        IntStream, LongStream, DoubleStream → primitive streams specialized for performance.
-
-        2. Your Code
-        java
-        List<Integer> list = Arrays.asList(50, 70, 30, 10, 40);
-        When you call:
-
-        java
-        list.stream()
-        you get a Stream<Integer> (an object stream).
-
-
-
-        3. Why mapToObj is Missing
-        mapToObj exists only on primitive streams (IntStream, LongStream, DoubleStream).
-
-        It’s used to convert primitive values into objects.
-
-        Example:
-
-        java

@@ -1,15 +1,26 @@
 package com.example.advanced;
 
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
+//reverse character of each word
+//input: hello world
+//output: olleh dlrow
 public class Problem6 {
     public static void main(String[] args) {
-        int a = 5;
+        String str = "hello world";
 
-        //works
-        Stream.of(a).forEach(n->System.out.println(a + 1));
+        //StringBuilder
+        String rev = Arrays.stream(str.split(" "))
+                .map(n -> new StringBuilder(n).reverse())
+                .collect(Collectors.joining(" "));
+        System.out.println(rev);
 
-        //exception: local variables referenced from a lambda expression must be final or effectively final
-        //Stream.of(a).forEach(n->System.out.println(a++));
+        //reduce
+        //split("") uses regex, so "abc".split("") → ["", "a", "b", "c"]
+        String rev1 = Arrays.stream(str.split(" "))
+                .map(n->Arrays.stream(n.split("")).reduce("", (a,b)-> b+a))
+                .collect(Collectors.joining(" "));
+        System.out.println(rev1);
     }
 }
