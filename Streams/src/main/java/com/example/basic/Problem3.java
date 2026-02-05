@@ -1,10 +1,10 @@
-package com.example.problems;
+package com.example.basic;
 
 import java.util.Arrays;
 import java.util.List;
 
-//WAP to find second largest element from a list
-public class Program3 {
+//find second-largest element from list
+public class Problem3 {
     public static void main(String[] args) {
     	
     	List<Integer> list = Arrays.asList(50,70,30,10,40);

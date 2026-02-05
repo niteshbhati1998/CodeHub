@@ -1,10 +1,10 @@
-package com.example.problems;
+package com.example.basic;
 
 import java.util.Arrays;
 import java.util.List;
 
-//WAP to find even & odd numbers from a list (TCS)
-public class Program4 {
+//find even & odd numbers from a list
+public class Problem4 {
 	public static void main(String[] args) {
 
 		List<Integer> list = Arrays.asList(10,15,20,25,30);

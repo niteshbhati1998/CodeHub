@@ -1,10 +1,10 @@
-package com.example.problems;
+package com.example.basic;
 
 import java.util.HashMap;
 import java.util.Map;
 
-//Sort employees based on their salary in descending order from given map (TCS)
-public class Program93 {
+//sort map based on value in descending order
+public class Problem9 {
     public static void main(String[] args) {
     	Map<String,Integer> map = new HashMap<>();
     	map.put("A", 10);
@@ -12,6 +12,9 @@ public class Program93 {
     	map.put("C", 70);
     	map.put("D", 30);
     	
-    	map.entrySet().stream().sorted((a,b)->b.getValue()-a.getValue()).forEach(System.out::println);
+    	map.entrySet()
+				.stream()
+				.sorted((a,b)->b.getValue()-a.getValue())
+				.forEach(System.out::println);
     } 
 }

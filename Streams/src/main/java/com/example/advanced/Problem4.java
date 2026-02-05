@@ -1,9 +1,9 @@
-package com.example.problems;
+package com.example.advanced;
 
 import java.util.stream.IntStream;
 
-//WAP to check String is Palindrome or not (TCS)
-public class Program9 {
+//check string is palindrome or not
+public class Problem4 {
     public static void main(String[] args) {
     	
     	String str = "madam";  
@@ -11,9 +11,9 @@ public class Program9 {
     	//two-pointer technique
     	boolean b = IntStream.range(0, str.length()/2).allMatch(n->str.charAt(n)==str.charAt(str.length()-1-n));
     	if(b) {
-    		System.out.println("Palindrome");
+    		System.out.println("palindrome");
     	} else {
-    		System.out.println("Not Palindrome");
+    		System.out.println("not palindrome");
     	}
     } 
 }

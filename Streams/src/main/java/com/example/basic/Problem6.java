@@ -1,4 +1,4 @@
-package com.example.problems;
+package com.example.basic;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-//WAP to find duplicate elements from a list
-public class Program6 {
+//find duplicate elements from list
+public class Problem6 {
     public static void main(String[] args) {
     	
     	List<Integer> list = Arrays.asList(50,70,30,50,10,40,30,50,30);
@@ -35,7 +35,7 @@ public class Program6 {
 		    .entrySet()
 		    .stream()
 		    .filter(n->n.getValue()>1)
-		    .collect(Collectors.toMap(n->n.getKey(), n->n.getValue()));
+		    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     	System.out.println(map);
     } 
 }
