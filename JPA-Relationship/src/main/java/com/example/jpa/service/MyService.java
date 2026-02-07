@@ -1,13 +1,16 @@
 package com.example.jpa.service;
 
-import com.example.jpa.entity.*;
+import com.example.jpa.entity.m2m.Course;
+import com.example.jpa.entity.m2m.Student;
+import com.example.jpa.entity.o2m.Department;
+import com.example.jpa.entity.o2m.Employee;
+import com.example.jpa.entity.o2o.*;
 import com.example.jpa.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Service
 public class MyService {
@@ -22,13 +25,7 @@ public class MyService {
     private DepartmentRepository departmentRepository;
 
     @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
     private StudentRepository studentRepository;
-
-    @Autowired
-    private CourseRepository courseRepository;
 
     public Passport savePassport(Passport passport) {
         return passportRepository.save(passport);

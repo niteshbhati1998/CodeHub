@@ -1,6 +1,9 @@
 package com.example.jpa.controller;
 
-import com.example.jpa.entity.*;
+import com.example.jpa.entity.m2m.Student;
+import com.example.jpa.entity.o2m.Department;
+import com.example.jpa.entity.o2o.Passport;
+import com.example.jpa.entity.o2o.Person;
 import com.example.jpa.model.Response;
 import com.example.jpa.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;

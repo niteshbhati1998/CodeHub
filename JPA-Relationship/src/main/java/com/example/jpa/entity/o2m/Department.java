@@ -1,6 +1,5 @@
-package com.example.jpa.entity;
+package com.example.jpa.entity.o2m;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.example.jpa.entity;
+package com.example.jpa.entity.o2o;
 
 import jakarta.persistence.*;
 import lombok.Data;

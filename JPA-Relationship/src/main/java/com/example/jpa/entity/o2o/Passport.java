@@ -1,4 +1,4 @@
-package com.example.jpa.entity;
+package com.example.jpa.entity.o2o;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
