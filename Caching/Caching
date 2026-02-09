@@ -1,0 +1,23 @@
+@EnableCaching
+@Cacheable
+@CachePut
+update the data in database + update the provided cache as well
+@CacheEvict
+
+Types of caching
+
+1. in-memory cache
+2. distributed cache
+
+in-memory cache
+Stores data in applications RAM using ConcurrentHashMap
+diagram...
+
+issues with in-memory cache
+in multi-server setup (like microservices), each server has its own cache
+one server might have cached data, but others won't ->producing data inconsistency
+
+distributed cache
+uses external system to share cache across servers
+ex: Redis
+diagram...

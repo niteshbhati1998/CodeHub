@@ -1,10 +1,30 @@
 Optional class
 
-        //val.get()
-        //val.orElse(InputType input)
-        //val.orElseGet(Supplier supplier)   //can return input type only
-        //val.orElseThrow()
-        //val.orElseThrow(Supplier supplier)
+//get Optional value
+val.get()                                      //gives exception if no value present
+
+//create Optional
+                                                                                                 .get() call
+Optional.empty()                                //represents empty box                            Exception: No value present
+Optional.of(T t)                                //use only when value is not-null, else           Exception: NullPointerException
+Optional.ofNullable(T value)                    //use when value may or may not be null
+                                                //if value is null, it creates an empty optional  Exception: No value present
+
+//fetch Optional (if we want to specify what to do when value is present)
+
+val.isPresent()                                 //boolean value
+val.ifPresent(Consumer consumer)                //will not do anything if value not present
+
+//fetch Optional (if we want to specify what to do when value is not present)
+
+val.orElse(T t)
+val.orElseGet(Supplier supplier)
+val.orElseThrow()
+val.orElseThrow(Supplier supplier)
+
+
+//map
+//filter
 
 ==========================================================================================
 Two types of streams:
