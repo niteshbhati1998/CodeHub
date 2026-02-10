@@ -6,7 +6,7 @@ table: user
 ## psql commands
 psql -U postgres -d testdb -p 5433  //connecting with testdb database running on port 5433
 \dn                                 //list all schemas
-\dt staging.*                      //list all tables in staging schema
+\dt staging.*                       //list all tables in staging schema
 
 ## IntelliJ shortcuts
 option + enter = import

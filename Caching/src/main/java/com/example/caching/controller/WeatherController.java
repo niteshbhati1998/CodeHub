@@ -77,6 +77,19 @@ public class WeatherController {
         }
     }
 
+    @DeleteMapping("/delete/{city}")
+    public ResponseEntity<Response> deleteByCity(@PathVariable String city) {
+        Response<Weather> response = new Response<>();
+        try {
+            weatherService.deleteByCity(city);
+            response.setMessage("City deleted successfully");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            response.setMessage(e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/cache/inspection")
     public ResponseEntity<Response> getCacheContents() {
         Response<List<Weather>> response = new Response<>();

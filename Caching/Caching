@@ -21,3 +21,11 @@ distributed cache
 uses external system to share cache across servers
 ex: Redis
 diagram...
+
+
+
+
+Jpa pendings
+when and where to use transactiona
+@modifying
+validation bena level
