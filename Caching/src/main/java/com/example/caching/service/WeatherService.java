@@ -25,7 +25,7 @@ public class WeatherService {
         return weatherRepository.findAll();
     }
 
-    @Cacheable(value = "weather", key = "#city")
+    @Cacheable(value = "weather", key = "#city", unless = "#result == null")
     public Weather getWeatherByCity(String city) {
         return weatherRepository.findByCity(city);
     }

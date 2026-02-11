@@ -1,31 +1,13 @@
-@EnableCaching
-@Cacheable
-@CachePut
-update the data in database + update the provided cache as well
-@CacheEvict
+## Redis install using homebrew
+brew install redis
+brew install redis cli
+redis-server                   //if want to start in foreground
+brew services start redis      //if want to start in background
+brew services stop redis
+redis-cli ping                 //status
 
-Types of caching
-
-1. in-memory cache
-2. distributed cache
-
-in-memory cache
-Stores data in applications RAM using ConcurrentHashMap
-diagram...
-
-issues with in-memory cache
-in multi-server setup (like microservices), each server has its own cache
-one server might have cached data, but others won't ->producing data inconsistency
-
-distributed cache
-uses external system to share cache across servers
-ex: Redis
-diagram...
-
-
-
-
-Jpa pendings
-when and where to use transactiona
-@modifying
-validation bena level
+## Redis cli commands
+redis-cli                      //enter redis-cli
+exit                           //exit redis-cli
+get weather::delhi             //get value of specific key
+keys *                         //give all keys
