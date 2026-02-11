@@ -11,3 +11,8 @@ redis-cli                      //enter redis-cli
 exit                           //exit redis-cli
 get weather::delhi             //get value of specific key
 keys *                         //give all keys
+
+pending...
+cache hit, cache miss, cache fill
+custom cachemanager
+cashe implementation techniques

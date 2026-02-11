@@ -52,7 +52,7 @@ class MyServiceTest {
         when(myRepository.findById(id)).thenReturn(Optional.of(user));
 
         //Act
-        User result = myService.getUserDetails(id);
+        User result = myService.getUser(id);
 
         //Assert
         assertNotNull(result);
@@ -67,7 +67,7 @@ class MyServiceTest {
         when(myRepository.findById(id)).thenReturn(Optional.empty());
 
         //Act & Assert
-        RuntimeException ex = assertThrows(RuntimeException.class, () -> myService.getUserDetails(id));
+        RuntimeException ex = assertThrows(RuntimeException.class, () -> myService.getUser(id));
         assertEquals("Invalid user ID", ex.getMessage());
         verify(myRepository).findById(id);
     }
@@ -79,7 +79,7 @@ class MyServiceTest {
         doNothing().when(myRepository).deleteById(id);
 
         //Act & Assert
-        assertDoesNotThrow(() -> myService.deleteUserDetails(id));
+        assertDoesNotThrow(() -> myService.deleteUser(id));
         verify(myRepository, times(1)).deleteById(id);
     }
 
@@ -89,7 +89,7 @@ class MyServiceTest {
         long id = 11L;
 
         //Act & Assert
-        RuntimeException ex = assertThrows(RuntimeException.class, () -> myService.deleteUserDetails(id));
+        RuntimeException ex = assertThrows(RuntimeException.class, () -> myService.deleteUser(id));
         assertEquals("Invalid user ID", ex.getMessage());
         verifyNoMoreInteractions(myRepository);
         //verify(myRepository, never()).deleteById(id);

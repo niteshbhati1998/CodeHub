@@ -14,12 +14,16 @@ public class MyService {
     @Autowired
     private MyRepository myRepository;
 
-    public User getUserDetails(long id) {
+    public User saveUser(User user) {
+        return myRepository.save(user);
+    }
+
+    public User getUser(long id) {
         Optional<User> user = myRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Invalid user ID"));
     }
 
-    public void deleteUserDetails(long id) {
+    public void deleteUser(long id) {
         boolean isValid = validateId(id);
         if (isValid) {
             myRepository.deleteById(id);

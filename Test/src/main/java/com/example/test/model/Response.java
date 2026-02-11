@@ -1,5 +1,6 @@
-package com.example.test.entity;
+package com.example.test.model;
 
+import com.example.test.entity.User;
 import lombok.Data;
 
 @Data
