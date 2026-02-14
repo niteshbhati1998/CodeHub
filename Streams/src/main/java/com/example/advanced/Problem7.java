@@ -1,15 +1,30 @@
 package com.example.advanced;
 
-import java.util.stream.Stream;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
+//input="aabbbcc"
+//output=b3a2c2
 public class Problem7 {
     public static void main(String[] args) {
-        int a = 5;
 
-        //works
-        Stream.of(a).forEach(n->System.out.println(a + 1));
+        String str = "aabbbcc";
 
-        //exception: local variables referenced from a lambda expression must be final or effectively final
-        //Stream.of(a).forEach(n->System.out.println(a++));
+        Map<Character, Long> map = str.chars().mapToObj(n -> (char) n)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted((a, b) -> Long.compare(b.getValue(), a.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b)->a, LinkedHashMap::new));
+
+        String val = map.entrySet()
+                .stream()
+                .map(n->n.getKey()+""+n.getValue())
+                .collect(Collectors.joining());
+
+        System.out.println(val);
+
     }
 }

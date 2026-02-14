@@ -17,7 +17,7 @@ public class Test {
 //        value3.ifPresent(n->System.out.println(n));
 
         Optional<String> value4 = Optional.ofNullable(null);
-        System.out.println(value4.orElse(2));
+        //System.out.println(value4.orElse(2));
 
     }
 }
