@@ -15,7 +15,7 @@ public class MyController {
     @Autowired
     private MyService myService;
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<Response> saveUser(@RequestBody User user) {
         Response response = new Response();
         try {

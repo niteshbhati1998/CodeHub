@@ -1,7 +1,8 @@
-package com.example.test.service;
+package com.example.test.unit.service;
 
 import com.example.test.entity.User;
 import com.example.test.repository.MyRepository;
+import com.example.test.service.MyService;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

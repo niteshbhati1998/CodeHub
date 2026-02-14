@@ -1,5 +1,6 @@
-package com.example.test.controller;
+package com.example.test.unit.controller;
 
+import com.example.test.controller.MyController;
 import com.example.test.model.Response;
 import com.example.test.entity.User;
 import com.example.test.service.MyService;
@@ -32,11 +33,11 @@ class MyControllerTest {
         when(myService.getUser(id)).thenReturn(user);
 
         //Act
-        ResponseEntity<Response> resonseEntity = myController.getUser(id);
+        ResponseEntity<Response> responseEntity = myController.getUser(id);
 
         //Assert
-        assertEquals(user, resonseEntity.getBody().getPayload());
-        assertEquals(HttpStatus.OK, resonseEntity.getStatusCode());
+        assertEquals(user, responseEntity.getBody().getPayload());
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         verify(myService).getUser(id);
     }
 
@@ -47,11 +48,11 @@ class MyControllerTest {
         when(myService.getUser(id)).thenThrow(new RuntimeException("Invalid user ID"));
 
         //Act
-        ResponseEntity<Response> resonseEntity = myController.getUser(id);
+        ResponseEntity<Response> responseEntity = myController.getUser(id);
 
         //Assert
-        assertNull(resonseEntity.getBody().getPayload());
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, resonseEntity.getStatusCode());
+        assertNull(responseEntity.getBody().getPayload());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
         verify(myService).getUser(id);
     }
 }

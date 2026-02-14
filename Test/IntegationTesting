@@ -1,0 +1,29 @@
+Unit Testing
+-> Scope: tests individual classes/methods in isolation
+-> Dependencies: mocked
+-> Spring context: not loaded
+
+Integration Testing
+-> Scope: tests how multiple layers (controller->service->repository->db) work together
+-> Dependencies: real beans, real Db(H2/TestContainers), real serialization
+-> Spring context: Fully or partially loaded
+
+Test Containers
+-> java library that provides lightweight, disposable docker containers for integration testing
+-> these docker containers have their own database instance similar to real db
+   starts when test begins and destroyed when test ends
+
+Annotations
+
+@SpringBootTest
+-> tells spring boot to start full application context for testing
+
+@MockMvc
+-> fake postman
+-> allows to test controller endpoints without starting a real http server(tomcat)
+
+@AutoConfigureMockMvc
+-> configures mockmvc bean
+
+
+
