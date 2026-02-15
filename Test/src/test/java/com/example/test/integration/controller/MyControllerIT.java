@@ -28,7 +28,8 @@ class MyControllerIT {
     private ObjectMapper objectMapper;
 
     @Container
-    static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:18");
+    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:18")
+            .withInitScript("init.sql");
 
     @DynamicPropertySource
     static void dynamicConfiguration(DynamicPropertyRegistry registry) {
@@ -67,7 +68,6 @@ class MyControllerIT {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isInternalServerError())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Failed to save user"));
-
     }
 
 }
