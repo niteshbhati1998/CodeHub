@@ -8,10 +8,9 @@ Integration Testing
 -> Dependencies: real beans, real Db(H2/TestContainers), real serialization
 -> Spring context: Fully or partially loaded
 
-Test Containers
+TestContainers
 -> java library that provides lightweight, disposable docker containers for integration testing
--> these docker containers have their own database instance similar to real db
-   starts when test begins and destroyed when test ends
+-> once tests finish, these containers are automatically destroyed, ensuring a clean environment every time
 
 Annotations
 
@@ -21,9 +20,18 @@ Annotations
 @MockMvc
 -> fake postman
 -> allows to test controller endpoints without starting a real http server(tomcat)
+-> requests sent via mockMvc.perform(...) are processed through DispatcherServlet
 
 @AutoConfigureMockMvc
 -> configures mockmvc bean
+
+Dependencies to use for testcontainers
+
+1. testcontainers
+2. postgresql testcontainers
+
+create container using postgres docker image
+
 
 
 
