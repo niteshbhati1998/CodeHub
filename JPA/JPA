@@ -1,0 +1,7 @@
+1. hibernate-ddl-auto
+2. validations
+3. exception response
+
+
+how to implement paging for specific data
+as i can see only findAll method for page

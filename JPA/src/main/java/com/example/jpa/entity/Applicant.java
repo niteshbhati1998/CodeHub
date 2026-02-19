@@ -26,7 +26,7 @@ public class Applicant {
     @NotBlank(message = "lastName cannot be blank")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email_id", nullable = false, unique = true)
     @Email(message = "email format is invalid")
     @NotBlank(message = "email cannot be blank")
     private String email;
