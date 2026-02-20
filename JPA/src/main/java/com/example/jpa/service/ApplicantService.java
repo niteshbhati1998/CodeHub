@@ -1,6 +1,7 @@
 package com.example.jpa.service;
 
 import com.example.jpa.entity.Applicant;
+import com.example.jpa.exception.ApplicantNotFoundException;
 import com.example.jpa.repository.ApplicantCrudRepository;
 import com.example.jpa.repository.ApplicantJpaRepository;
 import com.example.jpa.repository.ApplicantPagingRepository;
@@ -48,18 +49,18 @@ public class ApplicantService {
     }
 
     public List<Applicant> getByValue(String value) {
-        return applicantCrudRepository.getApplicants(value);
+        return applicantCrudRepository.getApplicants(value).filter(list -> !list.isEmpty()).orElseThrow(() -> new ApplicantNotFoundException("Applicant not found"));
     }
 
     public Applicant updateApplicant(Applicant applicant) {
         Optional<Applicant> getApplicant = applicantCrudRepository.findByFirstNameAndLastName(applicant.getFirstName(), applicant.getLastName());
 
-        if(getApplicant.isPresent()) {
+        if (getApplicant.isPresent()) {
             Applicant app = getApplicant.get();
             app.setEmail(applicant.getEmail());
             return applicantCrudRepository.save(app);
         } else {
-            throw new RuntimeException("Applicant not found");
+            throw new ApplicantNotFoundException("Applicant not found");
         }
     }
 

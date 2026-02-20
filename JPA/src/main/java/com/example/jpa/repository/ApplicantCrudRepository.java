@@ -17,7 +17,7 @@ public interface ApplicantCrudRepository extends CrudRepository<Applicant, Long>
     List<Applicant> findByLastNameIgnoreCase(String lastName);
 
     @Query(value = "select * from staging.applicants_info a where a.first_name like %:val%", nativeQuery = true)
-    List<Applicant> getApplicants(@Param("val") String value);
+    Optional<List<Applicant>> getApplicants(@Param("val") String value);
 
     Optional<Applicant> findByFirstNameAndLastName(String firstName, String lastName);
 }

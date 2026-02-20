@@ -20,86 +20,44 @@ public class ApplicantController {
     private ApplicantService applicantService;
 
     @PostMapping("/save")
-    public ResponseEntity<Response> saveApplicant(@Valid @RequestBody Applicant applicant) {
-        Response response = new Response();
-        try {
-            Applicant savedApplicant = applicantService.saveApplicant(applicant);
-            response.setMessage("success");
-            response.setPayload(savedApplicant);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Response<Applicant>> saveApplicant(@Valid @RequestBody Applicant applicant) {
+        Applicant savedApplicant = applicantService.saveApplicant(applicant);
+        Response<Applicant> response = new Response<>("success", savedApplicant);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/get")
-    public ResponseEntity<Response> getApplicants() {
-        Response response = new Response();
-        try {
-            List<Applicant> applicantsList = applicantService.getApplicants();
-            response.setMessage("success");
-            response.setPayload(applicantsList);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Response<List<Applicant>>> getApplicants() {
+        List<Applicant> applicantsList = applicantService.getApplicants();
+        Response<List<Applicant>> response = new Response<>("success", applicantsList);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/getByLastName")
-    public ResponseEntity<Response> getByLastName(@RequestParam String lastName) {
-        Response response = new Response();
-        try {
-            List<Applicant> applicantsList = applicantService.getByLastName(lastName);
-            response.setMessage("success");
-            response.setPayload(applicantsList);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Response<List<Applicant>>> getByLastName(@RequestParam String lastName) {
+        List<Applicant> applicantsList = applicantService.getByLastName(lastName);
+        Response<List<Applicant>> response = new Response<>("success", applicantsList);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/getByValue")
-    public ResponseEntity<Response> getByValue(@RequestParam String value) {
-        Response response = new Response();
-        try {
-            List<Applicant> applicants = applicantService.getByValue(value);
-            response.setMessage("success");
-            response.setPayload(applicants);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Response<List<Applicant>>> getByValue(@RequestParam String value) {
+        List<Applicant> applicants = applicantService.getByValue(value);
+        Response<List<Applicant>> response = new Response<>("success", applicants);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PatchMapping("/update")
-    public ResponseEntity<Response> updateApplicant(@Valid @RequestBody Applicant applicant) {
-        Response response = new Response();
-        try {
-            Applicant updatedApplicant = applicantService.updateApplicant(applicant);
-            response.setMessage("success");
-            response.setPayload(updatedApplicant);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PatchMapping("/updateEmail")
+    public ResponseEntity<Response<Applicant>> updateApplicant(@Valid @RequestBody Applicant applicant) {
+        Applicant updatedApplicant = applicantService.updateApplicant(applicant);
+        Response<Applicant> response = new Response<>("success", updatedApplicant);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/getByPage")
-    public ResponseEntity<Response> getByPage(@RequestParam int page, @RequestParam int size) {
-        Response response = new Response();
-        try {
-            Page<Applicant> applicantsList = applicantService.getByPage(page, size);
-            response.setMessage("success");
-            response.setPayload(applicantsList);
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception ex) {
-            response.setMessage("failure: " + ex.getMessage());
-            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<Response<Page<Applicant>>> getByPage(@RequestParam int page, @RequestParam int size) {
+        Page<Applicant> applicantsList = applicantService.getByPage(page, size);
+        Response<Page<Applicant>> response = new Response<>("success", applicantsList);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
