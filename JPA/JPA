@@ -53,3 +53,47 @@ Spring uses Jackson to convert it into JSON.
 Jackson needs getters to read field values.
 
 Without getters, Jackson won’t know how to serialize your object into JSON.
+
+
+========================
+Bean Validations
+
+dependency:
+starter validation
+
+Annotatiaons:
+can provide cutom message in each of them
+
+@NotNull
+@Email
+@Pattern
+@Min
+@Max
+@NonBlank
+@Pattern(regexp = "")
+
+@Column(name = "email_id", nullable = false, unique = true)
+
+===================
+
+basic regex:
+^->start of string
+$->end of string
+[abc]->any one of a,b,c
+[^abc]->any character except a,b,c
+[0-9]->any digit from 0 to 9
+[a-zA-Z]->any letter from a to z or A to Z
+\d->any digit (equivalent to [0-9])
+
++ : one or more occurrences of the preceding element
+* : zero or more occurrences of the preceding element
+
+1. regex for digits from 1-10
+
+"^[0-9]+$"       ->any digit from 0 to 9, one or more times
+"^[0-9]{10}$"    ->any digit from 0 to 9, exactly 10 times
+"^[\\d{10}]$"    ->any digit from 0 to 9, exactly 10 times (using \d for digits)
+
+2. regex for allow all charcters except a, b, c
+
+"^[^abc]+$"     ->any character except a, b, c, one or more times

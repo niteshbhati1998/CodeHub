@@ -1,8 +1,7 @@
 package com.example.jpa.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,15 +18,22 @@ public class Applicant {
     private Long id;
 
     @Column(name = "first_name")
-    @NotBlank(message = "firstName cannot be blank")
+    @NotNull(message = "firstName cannot be null")
     private String firstName;
 
     @Column(name = "last_name")
-    @NotBlank(message = "lastName cannot be blank")
+    @NotNull(message = "lastName cannot be null")
     private String lastName;
 
-    @Column(name = "email_id", nullable = false, unique = true)
-    @Email(message = "email format is invalid")
-    @NotBlank(message = "email cannot be blank")
+    @Column(name = "email_id")
+    @Email(message = "invalid email format")
+    @NotBlank(message = "email cannot be null or empty")
     private String email;
+
+    @Min(value = 18, message = "minimum age should be 18")
+    @Max(value = 35, message = "maximum age should be 35")
+    private Integer age;
+
+    @Pattern(regexp = "^\\d{10}$", message = "phone number must be 10 digits")
+    private String phoneNumber;
 }
