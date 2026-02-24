@@ -1,0 +1,11 @@
+JPA
+
+1. how can we implement pagination for specific where clause in JPA?
+2. how to use a mapper to map data between entities and DTOs in JPA?
+3. what are these nullable, unique? hwo many are these? purpose of them if already applied bean validation?
+   @Column(name = "email_id", nullable = false, unique = true)
+
+ExceptionHandling
+
+1. when to extend Exception, when to extend RuntimeException?
+2. how many custom exceptions should we create for an application? how to decide?

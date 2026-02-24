@@ -26,6 +26,9 @@ val.orElseThrow(Supplier supplier)
 //map
 //filter
 
+optional does not throw exception in case of empty list in optional box
+or else throw does not work there
+
 ==========================================================================================
 Two types of streams:
 1. generic object stream (e.g., Stream<Integer>, Stream<String>)

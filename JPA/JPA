@@ -1,68 +1,37 @@
-1. hibernate-ddl-auto
-2. validations
-3. exception response
+JPA + ExceptionHandling + Bean Validations + Profiling + swagger
 
+ExceptionHandling
 
-how to implement paging for specific data
-as i can see only findAll method for page
+why custom exceptions?
+can customize message and http status code according to exception
 
+disadvantage of handling exception at endpoint level?
+1. different endpoints having try-catch for handling same exception (lot of boilerplate code)
 
+disadvantage of handling exception at controller level using @ExceptionHandler?
+1. not accessible to other controller classes,
+   have to write same exception handler method in each of them
 
-optional does not throw exception in case of empty list in optional box
-or else throw does not work there
+advantage of handling exception at global level using @ControllerAdvice?
+1. centralized exception handling for all controllers
 
+Best practice for exception handling:
+payload: clean and generic error response
+logger: detailed technical information for debugging
 
-cusotm exception advangtages:
+Purpose of adding getter/setter in dto class?
+when we return a java object from controller
+spring uses Jackson to convert it into JSON
+Jackson needs getters to read field values
 
-1. http status codes acocording provide
-2. message customize
-
-disadvantage:
-
-1. boilerplate code, try catch each time for same exception write
-for different enpoints
-
-@ExceptionHndler
-
-Advantage
-
-no need to write try catch for each endpoint, just write one method to handle the exception for all endpoints
-
-disadvantage
-not accessible to other dontroler class
-
-
-
-User-facing message → Something clean and generic like "failure: Internal Server Error".
-
-Technical details → Logged internally (to console, file, or monitoring system) using a logger.
-
-This way:
-
-End users don’t see sensitive stack traces or database errors.
-
-Developers still have full visibility in logs to debug the root cause.
-
-
-
-
-When you return a Java object from a Spring Boot controller:
-
-Spring uses Jackson to convert it into JSON.
-
-Jackson needs getters to read field values.
-
-Without getters, Jackson won’t know how to serialize your object into JSON.
-
-
-========================
+==============================================================================================
 Bean Validations
 
 dependency:
-starter validation
+starter-validation
 
-Annotatiaons:
-can provide cutom message in each of them
+Annotations:
+can provide custom message in each of them
 
 @NotNull
 @Email
@@ -72,9 +41,21 @@ can provide cutom message in each of them
 @NonBlank
 @Pattern(regexp = "")
 
-@Column(name = "email_id", nullable = false, unique = true)
+================================================================================================
+Profiling
 
-===================
+how to set profile
+project exp(mian application) -> edit configuration
+
+@Profile
+we tells spring boot to create a bean only when a particular profile is set
+
+2 active profiles
+dev,test
+Beans: All beans for all active profiles are created.
+Properties: All property files for active profiles are loaded, with later ones overriding earlier ones.
+
+================================================================================================
 
 basic regex:
 ^->start of string
@@ -97,3 +78,4 @@ $->end of string
 2. regex for allow all charcters except a, b, c
 
 "^[^abc]+$"     ->any character except a, b, c, one or more times
+

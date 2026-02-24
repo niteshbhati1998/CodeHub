@@ -12,7 +12,7 @@ TestContainers
 -> java library that provides lightweight, disposable docker containers for integration testing
 -> once tests finish, these containers are automatically destroyed, ensuring a clean environment every time
 
-Annotations
+Annotations (integration testing)
 
 @SpringBootTest
 -> tells spring boot to start full application context for testing
@@ -26,12 +26,21 @@ Annotations
 -> configures mockmvc bean
 
 Dependencies to use for testcontainers
-
 1. testcontainers
 2. postgresql testcontainers
 
-create container using postgres docker image
+Annotations (testcontainers)
 
+@Testcontainers
+@Container
 
+@DynamicPropertySource
+-> injects container values into Spring’s environment at runtime
 
+@ServiceConnection
+-> SpringBoot 3.1+
+-> spring boot automatically detects container values and injects them
 
+Why db properties are not provided in application-test.properties?
+-> testcontainers generates random port each time it starts a container
+   (jdbc url changes dynamically)
