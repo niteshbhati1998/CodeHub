@@ -18,11 +18,11 @@ public class Problem1 {
         list.add(new Employee("C", 35000));
         list.add(new Employee("D", 25000));
 
-        list.stream().sorted((a,b)->b.getSalary()-a.getSalary()).forEach(System.out::println);
+        list.stream().sorted((a, b) -> b.getSalary() - a.getSalary()).forEach(System.out::println);
 
-        list.stream().filter(n-> n.getName().startsWith("A")).forEach(System.out::println);
+        list.stream().filter(n -> n.getName().startsWith("A")).forEach(System.out::println);
 
-        Map<Integer, Long> map = list.stream().collect(Collectors.groupingBy(n->n.getSalary(), Collectors.counting()));
+        Map<Integer, Long> map = list.stream().collect(Collectors.groupingBy(n -> n.getSalary(), Collectors.counting()));
         System.out.println(map);
     }
 }

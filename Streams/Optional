@@ -39,3 +39,4 @@ mapToObj applies on primitive stream
 Streams are lazy   //invoked only when terminal operation is applied
 Optional is eager  //apply transformations immediately
 
+streams can't be apply on null values
