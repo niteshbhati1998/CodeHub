@@ -41,8 +41,9 @@ public class MyService {
         return personRepository.save(person);
     }
 
-    public List<Person> getPerson(String name) {
-        return personRepository.findByName(name);
+    public Person getPerson(Long id) {
+        Optional<Person> person = personRepository.findById(id);
+        return person.orElseThrow(()-> new RuntimeException("Person not found"));
     }
 
     public Passport getPassport(Long id) {

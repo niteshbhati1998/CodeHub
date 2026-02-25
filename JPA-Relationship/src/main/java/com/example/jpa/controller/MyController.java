@@ -61,11 +61,11 @@ public class MyController {
         }
     }
 
-    @GetMapping("/get/person/{name}")
-    public ResponseEntity<Response> getPerson(@PathVariable String name) {
+    @GetMapping("/get/person/{id}")
+    public ResponseEntity<Response> getPerson(@PathVariable Long id) {
         Response response = new Response();
         try {
-            List<Person> person = myService.getPerson(name);
+            Person person = myService.getPerson(id);
             response.setMessage("success");
             response.setPayload(person);
             return new ResponseEntity<>(response, HttpStatus.OK);
