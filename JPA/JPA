@@ -1,60 +1,11 @@
 JPA + ExceptionHandling + Bean Validations + Profiling + swagger
 
-ExceptionHandling
-
-why custom exceptions?
-can customize message and http status code according to exception
-
-disadvantage of handling exception at endpoint level?
-1. different endpoints having try-catch for handling same exception (lot of boilerplate code)
-
-disadvantage of handling exception at controller level using @ExceptionHandler?
-1. not accessible to other controller classes,
-   have to write same exception handler method in each of them
-
-advantage of handling exception at global level using @ControllerAdvice?
-1. centralized exception handling for all controllers
-
-Best practice for exception handling:
-payload: clean and generic error response
-logger: detailed technical information for debugging
+JPA
 
 Purpose of adding getter/setter in dto class?
 when we return a java object from controller
 spring uses Jackson to convert it into JSON
 Jackson needs getters to read field values
-
-==============================================================================================
-Bean Validations
-
-dependency:
-starter-validation
-
-Annotations:
-can provide custom message in each of them
-
-@NotNull
-@Email
-@Pattern
-@Min
-@Max
-@NonBlank
-@Pattern(regexp = "")
-
-================================================================================================
-Profiling
-
-how to set profile
-project exp(mian application) -> edit configuration
-
-@Profile
-we tells spring boot to create a bean only when a particular profile is set
-
-2 active profiles
-dev,test
-Beans: All beans for all active profiles are created.
-Properties: All property files for active profiles are loaded, with later ones overriding earlier ones.
-
 ================================================================================================
 
 basic regex:
