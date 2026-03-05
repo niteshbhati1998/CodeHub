@@ -1,6 +1,8 @@
-package com.cognizant.assessment.config;
+package com.cognizant.assessment.constant;
 
 public class AppConstants {
 
-    public static final String TOPIC_NAME = "location";
+    public static final String TOPIC_DRIVER_LOCATION = "driver_location";
+
+    public static final String TOPIC_DRIVER_LOCATION_KEY = "d1";
 }

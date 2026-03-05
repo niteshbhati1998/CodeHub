@@ -1,0 +1,56 @@
+install kafka
+
+establishing connection through terminal
+1.
+old versions- zookeeper start
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+OR,
+
+new versions(KRaft mode)
+-> kafka manages its own metadata
+-> but for that to work, we must need to format the storage once
+
+bin/kafka-storage.sh format \
+  --config config/server.properties \
+  --cluster-id $(bin/kafka-storage.sh random-uuid) \
+  --standalone
+
+2. kafka broker start (port: 9092)
+bin/kafka-server-start.sh config/server.properties
+
+3. topic create
+bin/kafka-topics.sh --create --topic driver_location --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+verify:
+list all topics
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+describe a topic
+bin/kafka-topics.sh --describe --topic driver_location --bootstrap-server localhost:9092
+
+4. producer start:
+bin/kafka-console-producer.sh --topic driver_location --bootstrap-server localhost:9092
+
+5. consumer start:
+bin/kafka-console-consumer.sh --topic driver_location --from-beginning --bootstrap-server localhost:9092
+
+======================================================================================
+
+establishing connection through service
+
+1. dependency
+spring-kafka
+
+2. application.properties
+#producer configuration
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+
+3. topic create
+when spring boot app starts & it sees NewTopic bean
+spring kafka’s component KafkaAdmin
+->automatically connects to Kafka (using spring.kafka.bootstrap-servers property)
+->creates the topic with provided configuration if it not exists
+
+4. publish data using KafkaTemplate
