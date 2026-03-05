@@ -1,0 +1,15 @@
+1. dependency
+spring-kafka
+
+2. application-properties
+#consumer configuration
+spring.kafka.consumer.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=group-1
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+
+3. consumer messages using KafkaListener
+
+
+g.kafka.consumer.auto-offset-reset=earliest
