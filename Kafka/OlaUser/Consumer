@@ -12,4 +12,5 @@ spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.S
 3. consumer messages using KafkaListener
 
 
-g.kafka.consumer.auto-offset-reset=earliest
+where all places, we need to mention consumer group, how command line consumer also was able to consumer even without providing cg name?
+what if we don't specify consumer group?
