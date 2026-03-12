@@ -1,6 +1,7 @@
-package com.example.advanced;
+package com.streams.strings.advanced;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -8,22 +9,23 @@ import java.util.stream.Collectors;
 //find first non-repeating character in a given string, print -1 if not available
 //str = "aabbcddeef"
 //output: c
-public class Problem1 {
+public class Problem5 {
 
     public static void main(String[] args) {
         String str = "aabbcddeef";
 
+        //map
         Optional<Character> val = str.chars()
-                .mapToObj(n-> (char)n)
+                .mapToObj(n->(char)n)
                 .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
                 .entrySet()
                 .stream()
                 .filter(n->n.getValue()==1)
-                .map(n->n.getKey())
+                .map(Map.Entry::getKey)
                 .findFirst();
-        System.out.println(val.map(String::valueOf).orElse("-1"));
+        System.out.println(val.get());
 
-        //concise but less efficient
+        //index of
         Optional<Character> val1 = str.chars()
                 .mapToObj(n-> (char)n)
                 .filter(n->str.indexOf(n)==str.lastIndexOf(n))

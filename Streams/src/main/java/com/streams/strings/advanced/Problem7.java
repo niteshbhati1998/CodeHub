@@ -1,4 +1,4 @@
-package com.example.advanced;
+package com.streams.strings.advanced;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,19 +12,17 @@ public class Problem7 {
 
         String str = "aabbbcc";
 
-        Map<Character, Long> map = str.chars().mapToObj(n -> (char) n)
+        String val = str.chars()
+                .mapToObj(n -> (char) n)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
-                .sorted((a, b) -> Long.compare(b.getValue(), a.getValue()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a,b)->a, LinkedHashMap::new));
-
-        String val = map.entrySet()
+                .sorted((a,b)->Long.compare(b.getValue(), a.getValue()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b)->b, LinkedHashMap::new))
+                .entrySet()
                 .stream()
                 .map(n->n.getKey()+""+n.getValue())
                 .collect(Collectors.joining());
-
         System.out.println(val);
-
     }
 }

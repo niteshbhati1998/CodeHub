@@ -1,0 +1,8 @@
+IntStream
+
+str.chars()
+mapToInt
+IntStream.range()/IntStream.rangeClosed
+
+
+Collector.joinging only works on strings

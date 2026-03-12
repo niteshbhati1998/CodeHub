@@ -1,4 +1,4 @@
-package com.example.employee;
+package com.streams.employee;
 
 import java.util.ArrayList;
 import java.util.List;

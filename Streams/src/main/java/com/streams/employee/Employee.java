@@ -1,4 +1,4 @@
-package com.example.employee;
+package com.streams.employee;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
