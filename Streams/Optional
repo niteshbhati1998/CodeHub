@@ -1,67 +1,33 @@
 Optional class
 
-package com.example.optional;
-
-import java.util.Optional;
-
-public class Test {
-    public static void main(String[] args) {
-        //Optional<String> value = Optional.empty();
-        //System.out.println(value.get());            //Exception: No value present
-
-        //Optional<String> value1 = Optional.of(null);
-        //System.out.println(value1.get());           //Exception: NullPointerException
-
-        //Optional<String> value2 = Optional.ofNullable(null);
-        //System.out.println(value2.orElseThrow());             //Exception: NoValuePresent
-
-//        Optional<String> value3 = Optional.ofNullable(null);
-//        value3.ifPresent(n->System.out.println(n));
-
-        Optional<String> value4 = Optional.ofNullable(null);
-        //System.out.println(value4.orElse(2));
-
-    }
-}
-
-
-//get Optional value
-val.get()                                      //gives exception if no value present
-
 //create Optional
-                                                                                                 .get() call
-Optional.empty()                                //represents empty box                            Exception: No value present
-Optional.of(T t)                                //use only when value is not-null, else           Exception: NullPointerException
-Optional.ofNullable(T value)                    //use when value may or may not be null
-                                                //if value is null, it creates an empty optional  Exception: No value present
 
-//fetch Optional (if we want to specify what to do when value is present)
+Optional.empty()
+->represents empty box
+->.get -> Exception: No value present
+
+Optional.of(T t)
+->use only when value is not-null
+->if value is null-> .get -> Exception: NullPointerException (at the time of creation itself)
+
+Optional.ofNullable(T t)
+->use when value may or may not be null
+->if value is null-> it returns Optional.empty() -> .get -> Exception: No value present
+
+=====================================================================================
+//fetch value
+
+val.get()
+
+//fetch Optional (if we want to only specify what to do when value is present)
 
 val.isPresent()                                 //boolean value
-val.ifPresent(Consumer consumer)                //will not do anything if value not present
+val.ifPresent(Consumer consumer)
 
-//fetch Optional (if we want to specify what to do when value is not present)
+//fetch Optional (if we want to specify both conditions)
 
 val.orElse(T t)
 val.orElseGet(Supplier supplier)
 val.orElseThrow()
 val.orElseThrow(Supplier supplier)
-
-
-//map
-//filter
-
-optional does not throw exception in case of empty list in optional box
-or else throw does not work there
-
-==========================================================================================
-Two types of streams:
-1. generic object stream (e.g., Stream<Integer>, Stream<String>)
-2. primitive streams (e.g., IntStream, LongStream, DoubleStream)
-
-mapToObj applies on primitive stream
-
-Streams are lazy   //invoked only when terminal operation is applied
-Optional is eager  //apply transformations immediately
-
-streams can't be apply on null values
+=====================================================================================
