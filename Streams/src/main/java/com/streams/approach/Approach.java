@@ -54,7 +54,23 @@ public class Approach {
         System.out.println(map5);
 
         //string to map
+        Map<Character, String> map6 = str.chars()
+                .mapToObj(n -> (char) n)
+                .collect(Collectors.toMap(n->n, n->"1", (a,b)->b));
+        System.out.println(map6);
 
         //string to map with group by
+        Map<Character, Long> map7 = str.chars()
+                .mapToObj(n -> (char) n)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(map7);
+
+        //string to map with group by with LinkedHashMap
+        Map<Character, Long> map8 = str.chars()
+                .mapToObj(n -> (char) n)
+                .sorted((a, b) -> b - a)
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
+        System.out.println(map8);
+
     }
 }
