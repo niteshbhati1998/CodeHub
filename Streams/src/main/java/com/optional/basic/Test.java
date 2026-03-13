@@ -23,5 +23,22 @@ public class Test {
         Optional<String> val4 = Optional.ofNullable(str1);
         System.out.println(val4.get());                        //Exception: No value present
 
+        //fetch values-> specify -> what to do when value is present
+        Optional<String> val5 = Optional.of(str);
+        if(val5.isPresent()) {
+            System.out.println(val5.get());
+        }
+
+        val5.ifPresent(n-> System.out.println(n+" "+"hii"));
+
+        //fetch values-> specify -> both conditions
+        Optional<String> val6 = Optional.ofNullable(str1);
+        System.out.println(val6.orElse("hii"));
+
+        System.out.println(val6.orElseGet(() -> "hii"));
+
+        System.out.println(val6.orElseThrow());
+
+        System.out.println(val6.orElseThrow(() -> new RuntimeException()));
     }
 }
