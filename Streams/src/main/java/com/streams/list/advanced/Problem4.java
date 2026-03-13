@@ -1,4 +1,4 @@
-package com.example.advanced;
+package com.streams.list.advanced;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 //collect all unique emails into a list
 //emails should be valid, no null, no empty
-public class Problem8 {
+public class Problem4 {
     public static void main(String[] args) {
 
         Map<String, List<String>> map = new HashMap<>();
@@ -18,11 +18,12 @@ public class Problem8 {
         map.put("D", Arrays.asList("456@example.com", "jahshshhs"));
         map.put("E", null);
 
-        map.entrySet().stream().filter(n->n.getValue()!=null)
-                .flatMap(n->n.getValue().stream())
-                .filter(n->n.contains("@") && n.contains(".com"))
-                .distinct()
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+        List<String> list = map.entrySet()
+                .stream()
+                .filter(n -> n.getValue() != null)
+                .flatMap(n -> n.getValue().stream())
+                .filter(n -> n.contains("@") && n.contains(".com"))
+                .collect(Collectors.toList());
+        System.out.println(list);
     }
 }

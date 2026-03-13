@@ -1,4 +1,4 @@
-package com.streams.basic;
+package com.streams.list.basic;
 
 import java.util.Arrays;
 import java.util.List;
