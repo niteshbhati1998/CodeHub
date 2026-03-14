@@ -50,15 +50,6 @@ public class LinkedList2 extends LinkedList1{
         remove.next=null;
     }
 
-    public void display() {
-        Node temp = head;
-        while (temp.next != null) {
-            System.out.println(temp.data);
-            temp = temp.next;
-        }
-        System.out.println(temp.data);
-    }
-
     public static void main(String[] args) {
         LinkedList2 ll = new LinkedList2();
         ll.insertAtBeginning(10);
