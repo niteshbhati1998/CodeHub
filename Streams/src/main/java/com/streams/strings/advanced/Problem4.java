@@ -1,28 +1,35 @@
 package com.streams.strings.advanced;
 
-import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-//reverse character of each word
-//input: hello world
-//output: olleh dlrow
+//find first non-repeating character in a given string, print -1 if not available
+//str = "aabbcddeef"
+//output: c
 public class Problem4 {
 
     public static void main(String[] args) {
+        String str = "aabbcddeef";
 
-        String str = "hello world";
+        //map
+        Optional<Character> val = str.chars()
+                .mapToObj(n->(char)n)
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(n->n.getValue()==1)
+                .map(Map.Entry::getKey)
+                .findFirst();
+        System.out.println(val.get());
 
-        //IntStream
-        String rev = Arrays.stream(str.split(" "))
-                .map(n-> IntStream.range(0, n.length()).mapToObj(i->String.valueOf(n.charAt(n.length()-1-i))).collect(Collectors.joining()))
-                .collect(Collectors.joining(" "));
-        System.out.println(rev);
-
-        //reduce
-        String rev1 = Arrays.stream(str.split(" "))
-                .map(n->Arrays.stream(n.split("")).reduce("", (a,b)->b+a))
-                .collect(Collectors.joining(" "));
-        System.out.println(rev1);
+        //index of
+        Optional<Character> val1 = str.chars()
+                .mapToObj(n-> (char)n)
+                .filter(n->str.indexOf(n)==str.lastIndexOf(n))
+                .findFirst();
+        System.out.println(val1.map(String::valueOf).orElse("-1"));
     }
 }

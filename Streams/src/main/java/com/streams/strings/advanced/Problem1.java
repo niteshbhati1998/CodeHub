@@ -1,6 +1,5 @@
 package com.streams.strings.advanced;
 
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,8 +24,9 @@ public class Problem1 {
         System.out.println(rev1);
 
         //reduce
-        String rev2 = Arrays.stream(str.split(""))
-                        .reduce("", (a,b)->b+a);
+        String rev2 = str.chars()
+                .mapToObj(n -> String.valueOf((char) n))
+                .reduce("", (a, b) -> b + a);
         System.out.println(rev2);
     }
 }

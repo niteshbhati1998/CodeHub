@@ -1,35 +1,22 @@
 package com.streams.strings.advanced;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
-//find first non-repeating character in a given string, print -1 if not available
-//str = "aabbcddeef"
-//output: c
+//find unique words from given string array
+//input: [“abc”, “dde”, “ffg”, “ijk”]
+//output: ["abc", "ijk"]
 public class Problem5 {
 
     public static void main(String[] args) {
-        String str = "aabbcddeef";
+        List<String> list = new ArrayList<>(Arrays.asList("abc", "dde", "ffg", "ijk"));
 
-        //map
-        Optional<Character> val = str.chars()
-                .mapToObj(n->(char)n)
-                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
-                .entrySet()
-                .stream()
-                .filter(n->n.getValue()==1)
-                .map(Map.Entry::getKey)
-                .findFirst();
-        System.out.println(val.get());
-
-        //index of
-        Optional<Character> val1 = str.chars()
-                .mapToObj(n-> (char)n)
-                .filter(n->str.indexOf(n)==str.lastIndexOf(n))
-                .findFirst();
-        System.out.println(val1.map(String::valueOf).orElse("-1"));
+        //set
+        List<String> list1 = list.stream()
+                .filter(n -> n.chars().mapToObj(i -> (char) i).collect(Collectors.toSet()).size() == n.length())
+                .collect(Collectors.toList());
+        System.out.println(list1);
     }
 }

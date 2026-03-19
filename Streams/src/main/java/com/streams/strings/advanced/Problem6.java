@@ -1,21 +1,23 @@
 package com.streams.strings.advanced;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-//find unique words from given string array
-//input: [“abc”, “dde”, “ffg”, “ijk”]
-//output: ["abc", "ijk"]
+//input="aabbbcc"
+//output=b3a2c2
 public class Problem6 {
-
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(Arrays.asList("abc", "dde", "ffg", "ijk"));
 
-        //set
-        list.stream()
-                .filter(n->n.chars().mapToObj(i-> (char)i).collect(Collectors.toSet()).size()==n.length())
-                .forEach(System.out::println);
+        String str = "aabbbcc";
+
+        String val = str.chars()
+                .mapToObj(n -> (char) n)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted((a,b)->Long.compare(b.getValue(), a.getValue()))
+                .map(n->n.getKey()+""+n.getValue())   //use "" else -> char + long = long
+                .collect(Collectors.joining());
+        System.out.println(val);
     }
 }

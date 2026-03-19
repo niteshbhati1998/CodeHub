@@ -1,6 +1,44 @@
-IntStream
+Stream || String
+
+Tip: Collectors.joining() only works on strings
+
+Approach-1
 str.chars()
+   .mapToObj(n -> (char) n)          //.mapToObj(n -> String.valueOf((char) n))
+   .collect(Collectors.joining());
+
+Approach-2
+Arrays.stream(str.split(""))
+      .collect(Collectors.joining());
+
+------------------------------------------------------------------------
+Stream || String || groupBy + LinkedHashMap
+
+str.chars()
+  .mapToObj(n->(char)n)
+  .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+
+=========================================================================
+hwo to convert to IntStream
+
+chars()
 mapToInt
 IntStream.range()/IntStream.rangeClosed
 
-Collector.joinging only works on strings
+==========================================================================
+difference between map & mapToObj
+
+map
+->used on object streams
+->ex: Stream<String>, Stream<Integer>
+
+mapToObj
+->used on primitive streams
+->ex: IntStream, LongStream
+
+===========================================================================
+sort a string without using java 8
+
+char[] arr = str.toCharArray();
+Arrays.sort(arr);
+String sorted = new String(arr);
