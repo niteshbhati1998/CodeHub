@@ -14,13 +14,13 @@ public class Problem1 {
         //HashSet
         Set<Integer> set = new HashSet<>();
         list.stream()
-                .filter(n->!set.add(n))
+                .filter(n -> !set.add(n))
                 .distinct()
                 .forEach(System.out::println);
 
         //Collections
         list.stream()
-                .filter(n-> Collections.frequency(list, n)>1)
+                .filter(n -> Collections.frequency(list, n) > 1)
                 .distinct()
                 .forEach(System.out::println);
 
@@ -29,7 +29,18 @@ public class Problem1 {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
-                .filter(n->n.getValue()>1)
+                .filter(n -> n.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .forEach(System.out::println);
+
+        //Array
+        int[] arr = {1, 2, 3, 1, 2, 1};
+        Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(n -> n.getValue() == 1)
                 .map(Map.Entry::getKey)
                 .forEach(System.out::println);
     }

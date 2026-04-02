@@ -23,6 +23,7 @@ public class Problem4 {
                 .filter(n -> n.getValue() != null)
                 .flatMap(n -> n.getValue().stream())
                 .filter(n -> n.contains("@") && n.contains(".com"))
+                .distinct()
                 .collect(Collectors.toList());
         System.out.println(list);
     }

@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-//find first non-repeating character in a given string, print -1 if not available
+//find first non-repeating character in a given string
 //str = "aabbcddeef"
 //output: c
 public class Problem4 {

@@ -8,7 +8,7 @@ Optional.empty()
 
 Optional.of(T t)
 ->use only when value is not-null
-->if value is null-> .get -> Exception: NullPointerException (at the time of creation itself)
+->if value is null-> Exception: NullPointerException (at the time of creation itself)
 
 Optional.ofNullable(T t)
 ->use when value may or may not be null

@@ -14,9 +14,10 @@ public class Problem3 {
         List<String> list = Arrays.asList("eat", "tea", "tan", "ate", "nat", "bat");
 
         //groupingBy needs a classifier function, key for grouping -> value is always List<?>
-        List<List<String>> anagramList = list.stream()
-                .collect(Collectors.groupingBy(n -> Arrays.stream(n.split("")).sorted().collect(Collectors.joining())))
-                .entrySet()
+        Map<String, List<String>> map = list.stream()
+                .collect(Collectors.groupingBy(n -> Arrays.stream(n.split("")).sorted().collect(Collectors.joining())));
+
+        List<List<String>> anagramList = map.entrySet()
                 .stream()
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());

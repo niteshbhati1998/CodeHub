@@ -22,7 +22,7 @@ str.chars()
 hwo to convert to IntStream
 
 chars()
-mapToInt
+mapToInt      //returntype: OptionalInt  //fetch: getAsInt
 IntStream.range()/IntStream.rangeClosed
 
 ==========================================================================
@@ -37,8 +37,3 @@ mapToObj
 ->ex: IntStream, LongStream
 
 ===========================================================================
-sort a string without using java 8
-
-char[] arr = str.toCharArray();
-Arrays.sort(arr);
-String sorted = new String(arr);

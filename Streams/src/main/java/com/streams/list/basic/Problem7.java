@@ -2,19 +2,15 @@ package com.streams.list.basic;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.OptionalDouble;
 
-//input: [542, 42, 63, 540]
-//output: 5425406342
+//find average of all numbers
 public class Problem7 {
     public static void main(String[] args) {
 
-        List<Integer> list = Arrays.asList(542, 42, 63, 540);
+        List<Integer> list = Arrays.asList(50, 70, 30, 10, 40);
 
-        String str = list.stream()
-                .sorted((a, b) -> b - a)
-                .map(Object::toString)
-                .collect(Collectors.joining());
-        System.out.println(str);
+        OptionalDouble val = list.stream().mapToDouble(Integer::doubleValue).average();
+        System.out.println(val.getAsDouble());
     }
 }

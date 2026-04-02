@@ -2,13 +2,20 @@ package com.streams.list.basic;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-//find distinct elements from list
+//input: ["542", "42", "63", "540"]
+//output: 5425406342
 public class Problem6 {
     public static void main(String[] args) {
 
-        List<Integer> list = Arrays.asList(50, 70, 30, 50, 10, 40, 30, 50, 30);
+        List<String> list = Arrays.asList("542", "42", "63", "540");
 
-        list.stream().distinct().forEach(System.out::println);
+        String str = list.stream()
+                .map(Integer::valueOf)
+                .sorted((a, b) -> b - a)
+                .map(Object::toString)
+                .collect(Collectors.joining());
+        System.out.println(str);
     }
 }
