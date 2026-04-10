@@ -4,7 +4,7 @@ Tip: Collectors.joining() only works on strings
 
 Approach-1
 str.chars()
-   .mapToObj(n -> (char) n)          //.mapToObj(n -> String.valueOf((char) n))
+   .mapToObj(n -> (char) n)              //.mapToObj(n -> String.valueOf((char) n))
    .collect(Collectors.joining());
 
 Approach-2
@@ -22,7 +22,7 @@ str.chars()
 hwo to convert to IntStream
 
 chars()
-mapToInt      //returntype: OptionalInt  //fetch: getAsInt
+mapToInt                                    //returntype: OptionalInt  //fetch: getAsInt
 IntStream.range()/IntStream.rangeClosed
 
 ==========================================================================
