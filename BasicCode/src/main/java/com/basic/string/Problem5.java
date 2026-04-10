@@ -1,4 +1,4 @@
-package com.basic.array;
+package com.basic.string;
 
 //string palindrome or not
 public class Problem5 {

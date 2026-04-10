@@ -1,8 +1,8 @@
 package com.example.controller;
 
-class Test {
+public class DebuggingChallenge {
+
     public static void main(String[] args) {
 
     }
 }
-

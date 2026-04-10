@@ -1,4 +1,4 @@
-package com.basic.array;
+package com.basic.string;
 
 //reverse given string
 public class Problem4 {

@@ -1,21 +1,27 @@
 package com.basic.array;
 
-//find missing number
-//if O is there in input no need to do arr.length+1
-public class Problem1 {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+//find nth missing numbers
+public class Problem2 {
     public static void main(String[] args) {
-        int[] arr = {9,6,4,2,3,5,7,1};
+        int[] arr = {5,1,4,7,2};
 
-        int n = arr.length+1;
-        int expectedSum = (n*(n+1))/2;
+        Arrays.sort(arr);
+        List<Integer> list = new ArrayList<>();
 
-        int sum = 0;
-        for(int i=0;i<arr.length;i++) {
-            sum+=arr[i];
+        for(int i=0;i<arr.length-1;i++) {
+            int current = arr[i];
+            int next = arr[i+1];
+
+            if(next-current>1) {
+                for(int j=current+1;j<next;j++) {
+                    list.add(j);
+                }
+            }
         }
-
-        int missingNum = expectedSum-sum;
-        System.out.println(missingNum);
-
+        System.out.println(list);
     }
 }

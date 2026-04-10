@@ -4,37 +4,32 @@ import java.util.HashSet;
 import java.util.Set;
 
 //longest substring length without repeated characters
-public class Problem8 {
+//sliding window O(n)
+public class Problem9 {
 
     public static void main(String[] args) {
-        String str = "studestrepdefj123567899";
+        String str = "abcdabcab";
 
-        Set<String> set = new HashSet<>();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            sb.append(str.charAt(i));
-            for (int j = i + 1; j < str.length(); j++) {
-                String val = String.valueOf(str.charAt(j));
-                if (sb.toString().contains(val)) {
-                    break;
-                } else {
-                    sb.append(val);
-                }
-            }
-            set.add(sb.toString());
-            sb = new StringBuilder();
-        }
-        System.out.println(set);
-
+        int left = 0;
+        int right = 0;
         int max = 0;
-        String sub = "";
-        for (String s : set) {
-            if (s.length() > max) {
-                max = s.length();
-                sub = s;
+
+        Set<Character> set = new HashSet<>();
+        while(right<str.length()) {
+
+            char c = str.charAt(right);
+
+            while(set.contains(c)) {
+                set.remove(str.charAt(left));   //abcb
+                left++;
             }
+            set.add(c);
+
+            if(right-left+1>max) {
+                max = right-left+1;
+            }
+            right++;
         }
         System.out.println(max);
-        System.out.println(sub);
     }
 }

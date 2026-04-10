@@ -1,41 +1,41 @@
 package com.basic.string;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-//longest substring without repeated characters
+//longest substring length without repeated characters
+//TC O(n^3)
 public class Problem8 {
 
     public static void main(String[] args) {
-        String str = "bbbbb";
-        char[] arr = str.toCharArray();
+        String str = "studestrepdefj123567899";
 
-        List<String> list = new ArrayList<>();
-
+        Set<String> set = new HashSet<>();
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<arr.length-1;i++) {
-            sb.append(arr[i]);
-            for(int j=i+1;j<arr.length;j++) {
-
-                if(sb.toString().contains(String.valueOf(arr[j]))) {
-//                    map.put(subString.toString(), subString.size());
-//                    subString = new LinkedHashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            sb.append(str.charAt(i));
+            for (int j = i + 1; j < str.length(); j++) {
+                String val = String.valueOf(str.charAt(j));
+                if (sb.toString().contains(val)) {
                     break;
+                } else {
+                    sb.append(val);
                 }
-                sb.append(arr[j]);
             }
-            list.add(sb.toString());
+            set.add(sb.toString());
             sb = new StringBuilder();
         }
-        System.out.println(list);
+        System.out.println(set);
 
-        int count = 0;
-        String key = "";
-        for(String strr: list) {
-            if(strr.length()>count) {
-                count = strr.length();
-                key = strr;
+        int max = 0;
+        String sub = "";
+        for (String s : set) {
+            if (s.length() > max) {
+                max = s.length();
+                sub = s;
             }
         }
-        System.out.println(key);
+        System.out.println(max);
+        System.out.println(sub);
     }
 }
