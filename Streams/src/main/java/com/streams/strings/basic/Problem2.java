@@ -1,6 +1,5 @@
 package com.streams.strings.basic;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 //two strings anagram or not (same character, different order)
@@ -11,13 +10,15 @@ public class Problem2 {
         String str1 = "silent";
         String str2 = "listen";
 
-        String val1 = Arrays.stream(str1.split(""))
+        String val1 = str1.chars()
+                .mapToObj(n -> String.valueOf((char) n))
                 .sorted()
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining());
 
-        String val2 = Arrays.stream(str2.split(""))
+        String val2 = str2.chars()
+                .mapToObj(n -> String.valueOf((char) n))
                 .sorted()
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining());
 
         if (val1.equals(val2)) {
             System.out.println("anagram");

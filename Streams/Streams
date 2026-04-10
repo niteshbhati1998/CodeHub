@@ -1,18 +1,20 @@
 Stream || String
 
-Tip: Collectors.joining() only works on strings
+A-> 65
+a-> 97
 
 Approach-1
 str.chars()
    .mapToObj(n -> (char) n)              //.mapToObj(n -> String.valueOf((char) n))
    .collect(Collectors.joining());
+Note: Collectors.joining() only works on strings
 
 Approach-2
 Arrays.stream(str.split(""))
       .collect(Collectors.joining());
 
 ------------------------------------------------------------------------
-Stream || String || groupBy + LinkedHashMap
+String || groupBy + LinkedHashMap
 
 str.chars()
   .mapToObj(n->(char)n)
@@ -25,9 +27,7 @@ chars()
 mapToInt                                    //returntype: OptionalInt  //fetch: getAsInt
 IntStream.range()/IntStream.rangeClosed
 
-==========================================================================
 difference between map & mapToObj
-
 map
 ->used on object streams
 ->ex: Stream<String>, Stream<Integer>
