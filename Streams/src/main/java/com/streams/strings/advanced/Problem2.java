@@ -15,6 +15,7 @@ public class Problem2 {
             System.out.println("palindrome");
         }
 
+        //reduce
         boolean val1 = str.chars()
                 .mapToObj(n -> String.valueOf((char) n))
                 .reduce("", (a, b) -> b + a)

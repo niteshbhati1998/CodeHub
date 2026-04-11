@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 //group anagrams together
-//input: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”]
-//output: [[“bat”], [“nat”, “tan”], [“ate”, “eat”, “tea”]]
+//input: ["eat", "tea", "tan", "ate", "nat", "bat"]
+//output: [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
 public class Problem3 {
     public static void main(String[] args) {
 

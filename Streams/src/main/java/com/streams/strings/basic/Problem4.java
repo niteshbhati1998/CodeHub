@@ -8,7 +8,7 @@ public class Problem4 {
         boolean b = str.chars()
                 .mapToObj(n -> (char) n)
                 .map(Character::toLowerCase)
-                .anyMatch(n -> n == 'a' || n == 'i' || n == 'o' || n == 'u');
+                .anyMatch(n -> n == 'a' || n == 'e' || n == 'i' || n == 'o' || n == 'u');
         System.out.println(b);
     }
 }

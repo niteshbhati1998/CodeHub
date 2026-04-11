@@ -13,12 +13,23 @@ Approach-2
 Arrays.stream(str.split(""))
       .collect(Collectors.joining());
 
-------------------------------------------------------------------------
+-------------------------------------------------------------------------
 String || groupBy + LinkedHashMap
 
 str.chars()
   .mapToObj(n->(char)n)
   .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+-------------------------------------------------------------------------
+toList() vs collect(Collectors.toList())
+
+collect(Collectors.toList())
+->java 8
+->gives mutable list
+->e.g- ArrayList
+
+toList()
+->java 16
+->gives unmodifiable list
 
 =========================================================================
 hwo to convert to IntStream
@@ -26,6 +37,16 @@ hwo to convert to IntStream
 chars()
 mapToInt                                    //returntype: OptionalInt  //fetch: getAsInt
 IntStream.range()/IntStream.rangeClosed
+
+difference between range and rangeClosed
+
+range
+->end exclusive
+->e.g: IntStream.range(1, 5)          //1 2 3 4
+
+rangeClosed
+->end inclusive
+->e.g: IntStream.rangeClosed(1, 5)    //1 2 3 4 5
 
 difference between map & mapToObj
 map
